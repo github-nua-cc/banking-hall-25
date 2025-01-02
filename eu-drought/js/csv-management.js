@@ -1,3 +1,7 @@
+/**
+ * THIS FILE SHOULD NOT BE CHANGED. Please check in with your tutors if you believe a change is needed before proceeding.
+ */
+
 //declare file path
 const fileUrl = "data/droughts.csv";
 
@@ -56,4 +60,5 @@ function getRowFromYear(rows, year) {
   }
 }
 
+// fetch csv at start to fill draughtInformation variable data
 fetchCSV(fileUrl);

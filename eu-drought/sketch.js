@@ -3,6 +3,12 @@ This template visualises Drought Impact per square meter in European Union Count
 data is taken from https://www.eea.europa.eu/en/datahub/featured-data/statistical-data/datahubitem-view/c7c868d8-95dc-4f23-9dde-4cdc2738cc4d
 */
 
+//header text
+const HEADERTEXT = "EU Drought Data per Country";
+
+//margin at bottom of canvas
+const BOTTOMMARGIN = 52;
+
 // optional parameter to get data from just one country
 //let geoCode = "FR";
 // parameter to get data from just one year
@@ -10,44 +16,57 @@ let year = 2022;
 
 // This vector is used to display the countries drought areas on the screen. It can be filled in different functions - for ex. getAreasForYear - as well as manually. Objects within the vector should be of type {country : String, area: Number, centre : {x: Number, y: Number}}
 let droughtsToDisplay = [];
-// list of countries of specific year. This array is updated in the getAresForYear function.
-// let countries = [];
 
-// list of
-// let areas = [];
-// let centres = [];
-const HEADERTEXT = "EU Drought Data per Country";
-const BOTTOMMARGIN = 52;
-
-function preload() {}
+//maximum area stored within spreadsheet data
+let maximumDraughtArea = 0;
 
 function setup() {
-  calculateMaximumArea();
-  getAreasForYear(year);
+  //calculate the maximum area and store in maximumDraughtArea variable
+  maximumDraughtArea = calculateMaximumArea();
+
+  // update droughtsToDisplay list to those of the currently displayed year
+  droughtsToDisplay = getAreasForYear(year);
+
+  // create canvas of maximum width and height
   createCanvas(windowWidth, windowHeight);
+
+  // set background to black
+  background(0);
+
+  // set stroke to null
   noStroke();
+
+  // set text align to centre
+  textAlign(CENTER, CENTER);
 }
 
 function draw() {
-  background(0);
+  // set text size and text align for countries
   textSize(12);
-  textAlign(LEFT, TOP);
+
+  // loop through droughtsToDisplay and display circle with area & position given
   for (index in droughtsToDisplay) {
+    // get info stored in the current index of the array
     const display = droughtsToDisplay[index];
 
-    //draw area
+    // set fill of circles to brown with alpha 100 - to allow overlap
     fill(200, 100, 0, 100);
+
+    // draw circle at (x, y) with proportional area depending on maximumDraughtArea and windowHeight
     circle(
       display.centre.x,
       display.centre.y,
       (display.area / maximumDraughtArea) * windowHeight
     );
 
-    //write country name
+    // set fill to white for country name
     fill(255);
+
+    // draw country name at centre of area
     text(display.country, display.centre.x, display.centre.y);
   }
+
+  // draw title at end to prevent covering it
   textSize(36);
-  textAlign(CENTER, CENTER);
   text(HEADERTEXT, width / 2, height - BOTTOMMARGIN / 2);
 }
