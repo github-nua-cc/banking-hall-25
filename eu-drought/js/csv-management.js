@@ -6,7 +6,7 @@ let draughtInformation;
 
 /**
  * parse csv content
- * @param {string} data in comma separated style
+ * @param {String} data in comma separated style
  */
 function parseCSV(data) {
   //split by rows
@@ -19,7 +19,7 @@ function parseCSV(data) {
 
 /**
  * fetch csv and parse csv
- * @param {string} fileUrl url to csv file
+ * @param {String} fileUrl url to csv file
  */
 async function fetchCSV(fileUrl) {
   const response = await fetch(fileUrl);
@@ -34,7 +34,7 @@ async function fetchCSV(fileUrl) {
 
 /**
  * get all rows that are linked to this geocode in the CSV
- * @param {*} geoCode 
+ * @param {String} geoCode 
  */
 function getRowsFromArea(geoCode) {
   let rows = [];
