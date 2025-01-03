@@ -44,20 +44,26 @@ function getAreasForYear(year) {
     const countryName = row[6];
     const draughtArea = Number(row[8]);
 
-    //calculate new random centre and store in correctly formatted variable
-    const newX = random(0, windowWidth);
-    const newY = random(0, windowHeight);
-    const centre = { x: newX, y: newY };
-
     //create object & push to droughtsToDisplay vector
     const newDisplay = {
       country: countryName,
       area: draughtArea,
-      centre: centre,
     };
     droughtsToDisplay.push(newDisplay);
   }
 
   // return the complete list of droughts to display
   return droughtsToDisplay;
+}
+
+function recalculateCentres() {
+  let centres = [];
+  for (element of droughtsToDisplay) {
+    //calculate new random centre and store in correctly formatted variable
+    const newX = random(0, windowWidth);
+    const newY = random(0, windowHeight);
+    const centre = { x: newX, y: newY };
+    centres.push(centre);
+  }
+  return centres;
 }
