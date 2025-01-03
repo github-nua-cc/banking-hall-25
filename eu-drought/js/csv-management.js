@@ -6,7 +6,7 @@
 const fileUrl = "data/droughts.csv";
 
 //file content
-let draughtInformation;
+let droughtInformation;
 
 /**
  * parse csv content
@@ -18,7 +18,7 @@ function parseCSV(data) {
   //split by cols
   const result = rows.map((row) => row.split(","));
   //set info to result
-  draughtInformation = result;
+  droughtInformation = result;
 }
 
 /**
@@ -42,7 +42,7 @@ async function fetchCSV(fileUrl) {
  */
 function getRowsFromArea(geoCode) {
   let rows = [];
-  for(let row of draughtInformation) {
+  for(let row of droughtInformation) {
     if(row[5] === geoCode) rows.push(row);
   }
   return rows;
@@ -60,5 +60,5 @@ function getRowFromYear(rows, year) {
   }
 }
 
-// fetch csv at start to fill draughtInformation variable data
+// fetch csv at start to fill droughtInformation variable data
 fetchCSV(fileUrl);

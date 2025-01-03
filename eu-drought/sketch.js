@@ -20,11 +20,11 @@ let droughtsToDisplay = [];
 let centres = [];
 
 //maximum area stored within spreadsheet data
-let maximumDraughtArea = 0;
+let maximumDroughtArea = 0;
 
 function setup() {
-  //calculate the maximum area and store in maximumDraughtArea variable
-  maximumDraughtArea = calculateMaximumArea();
+  //calculate the maximum area and store in maximumDroughtArea variable
+  maximumDroughtArea = calculateMaximumArea();
 
   // create canvas of maximum width and height
   createCanvas(windowWidth, windowHeight);
@@ -64,11 +64,11 @@ function draw() {
     // set fill of circles to brown with alpha 100 - to allow overlap
     fill(200, 100, 0, 100);
 
-    // draw circle at (x, y) with proportional area depending on maximumDraughtArea and windowHeight
+    // draw circle at (x, y) with proportional area depending on maximumDroughtArea and windowHeight
     circle(
       centre.x,
       centre.y,
-      (display.area / maximumDraughtArea) * windowHeight
+      (display.area / maximumDroughtArea) * windowHeight
     );
 
     // set fill to white for country name
