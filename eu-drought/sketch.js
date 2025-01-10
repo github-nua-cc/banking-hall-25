@@ -38,7 +38,7 @@ function setup() {
   maximumDroughtArea = calculateMaximumArea();
 
   // create canvas of maximum width and height
-  createCanvas(windowWidth * 0.9, windowHeight * 0.9);
+  createCanvas(windowWidth * CANVAS_RATIO, windowHeight * CANVAS_RATIO);
 
   // set stroke to null
   noStroke();

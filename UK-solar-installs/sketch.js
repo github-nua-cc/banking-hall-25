@@ -36,7 +36,7 @@ function preload() {
   table = loadTable("data/installs.csv", "csv", "header");
 }
 function setup() {
-  createCanvas(innerWidth * 0.9, innerHeight * 0.9);
+  createCanvas(innerWidth * CANVAS_RATIO, innerHeight * CANVAS_RATIO);
   // get names of months
   monthlyNames = table.columns;
   // get rid of first value (unused)
