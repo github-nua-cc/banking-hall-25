@@ -117,7 +117,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(innerWidth, innerHeight);
+  createCanvas(innerWidth * 0.9, innerHeight * 0.9);
   for (let rowI = 0; rowI < 40; rowI++) {
     for (let colI = 0; colI < 12; colI++) {
       averageTemps.push(table.get(rowI, colI));
