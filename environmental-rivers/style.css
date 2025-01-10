@@ -1,8 +1,30 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: black;
 }
 
 canvas {
   display: block;
+}
+
+#canvas{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0px;
+}
+#credit{
+  position: absolute;
+  top: 94%;
+  left: 20px;
+  color: white;
+}
+
+#river-info{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
