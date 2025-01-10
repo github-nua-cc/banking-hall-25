@@ -17,12 +17,14 @@
  * [4] unit_label: always "Square kilometre"
  * [5] geo (geographic area): This can be EU27_2020 (the whole of the EU) OR a country code (such as ES, FR...)
  * [6] geo_label: A longer version of geo, which will either be "European Union - 27 countries (from 2020)" or the name of the country (such as Spain, France...)
- * [7] time: A number ranging from 2000 to 2020 - representing the year to which that row belongs to
+ * [7] time: A number ranging from 2000 to 2023 - representing the year to which that row belongs to
  * [8] obs_value: A number representing the square kilometres of drought observed that year
  * 
  * To access a column, you can use the command droughtInformation[index], for ex. droughtInformation[6] will contain a geo_label.
  * 
  */
+
+let minArea, maxArea;
 
 /**
  * Calculate the maximum drought area from the information stored in the droughtInformation variable
@@ -56,6 +58,8 @@ function getAreasForYear(year) {
   // initialize vector as empty
   let droughtsToDisplay = [];
 
+  let droughtAreas = [];
+
   // loop through information stored in the droughtInformation variable
   for (row of droughtInformation) {
     if (row[0] === "eu_sdg") continue; //skip first line
@@ -66,10 +70,12 @@ function getAreasForYear(year) {
     const countryName = row[6];
     const droughtArea = Number(row[8]);
 
+    droughtAreas.push(droughtArea)
+
     //create object & push to droughtsToDisplay vector
     const newDisplay = {
       country: countryName,
-      area: droughtArea,
+      area: droughtArea * 0.5,
     };
     droughtsToDisplay.push(newDisplay);
   }
@@ -84,7 +90,10 @@ function recalculateCentres() {
     //calculate new random centre and store in correctly formatted variable
     const newX = random(0, windowWidth);
     const newY = random(0, windowHeight);
-    const centre = { x: newX, y: newY };
+    const speedX = random(-2, 2);
+    const speedY = random(-2, 2); 
+    // create object to store x position and y position plus x velocity and y velocity
+    const centre = { x: newX, y: newY, vx: speedX, vy: speedY };
     centres.push(centre);
   }
   return centres;
