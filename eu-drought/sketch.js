@@ -7,7 +7,7 @@ data is taken from https://www.eea.europa.eu/en/datahub/featured-data/statistica
 const HEADERTEXT = "EU Drought Data per Country";
 
 //margin at bottom of canvas
-const BOTTOMMARGIN = 52;
+const TOPMARGIN = 52;
 
 // optional parameter to get data from just one country
 //let geoCode = "FR";
@@ -128,11 +128,11 @@ function draw() {
   // draw title at end to prevent covering it
   textSize(36);
   fill(255);
-  stroke(0);
-  strokeWeight(2);
-  
-  text(HEADERTEXT, width / 2, height - BOTTOMMARGIN / 2);
-  text(year, 75, height - BOTTOMMARGIN / 2)
+  noStroke();
+  text(HEADERTEXT, width / 2, TOPMARGIN / 2);
+  fill(0);
+
+
   frameRate(frameRateAmount);
 }
 
