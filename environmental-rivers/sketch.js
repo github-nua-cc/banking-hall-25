@@ -43,7 +43,7 @@ function setup() {
 
 
   //canvas position - Oli
-  let canvas = createCanvas(innerWidth, innerHeight);
+  let canvas = createCanvas(innerWidth * 0.9, innerHeight * 0.9);
   canvas.id("canvas"); 
   let newCanvasX = (windowWidth) - width;
   let newCanvasY = (windowHeight) / 8;
